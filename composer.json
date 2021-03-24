@@ -8,6 +8,7 @@
         }
     ],
     "require": {
-        "filp/whoops": "^2.11"
+        "filp/whoops": "^2.11",
+        "symfony/http-foundation": "^5.2"
     }
 }
