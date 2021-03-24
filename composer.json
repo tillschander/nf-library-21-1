@@ -1,0 +1,11 @@
+{
+    "name": "till/nf-library",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Till Schander",
+            "email": "tillschander@gmail.com"
+        }
+    ],
+    "require": {}
+}
