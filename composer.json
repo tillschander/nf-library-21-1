@@ -7,5 +7,7 @@
             "email": "tillschander@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "filp/whoops": "^2.11"
+    }
 }
