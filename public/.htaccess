@@ -1,0 +1,9 @@
+# Enable rewrites
+RewriteEngine On
+
+# If the requested filename/directory exists, simply serve it
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Otherwise rewrite the traffic to the front controller
+RewriteRule ^(.*) index.php [QSA,L]
