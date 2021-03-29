@@ -7,13 +7,13 @@ return [
     ['GET', '/category/{id}', function () {
         return file_get_contents(__DIR__ . '/../templates/category.html');
     }],
-    ['GET', '/item', function () {
+    ['GET', '/item/{id}', function () {
         return file_get_contents(__DIR__ . '/../templates/item.html');
     }],
     ['GET', '/cart', function () {
         return file_get_contents(__DIR__ . '/../templates/cart.html');
     }],
-    ['POST', '/cart', function () {
+    ['POST', '/cart/{id}', function () {
         return '';
     }],
     ['GET', '/cart/success', function () {
