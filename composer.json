@@ -10,5 +10,10 @@
     "require": {
         "filp/whoops": "^2.11",
         "symfony/http-foundation": "^5.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
     }
 }
