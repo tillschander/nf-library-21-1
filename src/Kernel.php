@@ -4,12 +4,16 @@ namespace App;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use FastRoute;
 
 class Kernel
 {
+    private FastRoute\Dispatcher $dispatcher;
+
     public function __construct(string $environment)
     {
         $this->initErrorHandler($environment);
+        $this->initDispatcher();
     }
 
     private function initErrorhandler(string $environment): void
@@ -30,16 +34,25 @@ class Kernel
         $whoops->register();
     }
 
+    private function initDispatcher()
+    {
+        $this->dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
+            $routes = require __DIR__ . '/../config/routes.php';
+
+            foreach ($routes as $route) {
+                $r->addRoute($route[0], $route[1], $route[2]);
+            }
+        });
+    }
+
     public function handle(Request $request): Response
     {
+        $routeInfo = $this->dispatcher->dispatch($request->getMethod(), $request->getRequestUri());
         $response = new Response();
-        $routes = require __DIR__ . '/../config/routes.php';
-        
-        foreach ($routes as $route) {
-            if ($request->getMethod() === $route[0] && $request->getRequestUri() === $route[1]) {
-                $content = call_user_func($route[2]);
-                $response->setContent($content);
-            }
+
+        if ($routeInfo[0] === FastRoute\Dispatcher::FOUND) {
+            $content = call_user_func($routeInfo[1], $routeInfo[2]);
+            $response->setContent($content);
         }
         
         if (!$response->getContent()) {

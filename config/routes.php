@@ -4,7 +4,7 @@ return [
     ['GET', '/', function () {
         return file_get_contents(__DIR__ . '/../templates/index.html');
     }],
-    ['GET', '/category', function () {
+    ['GET', '/category/{id}', function () {
         return file_get_contents(__DIR__ . '/../templates/category.html');
     }],
     ['GET', '/item', function () {
