@@ -32,7 +32,6 @@ class Kernel
 
     public function handle(Request $request): Response
     {
-        throw new \Error();
         $response = new Response();
         $routes = require __DIR__ . '/../config/routes.php';
         
