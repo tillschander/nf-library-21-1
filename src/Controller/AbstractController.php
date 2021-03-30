@@ -24,10 +24,11 @@ abstract class AbstractController
         return $this->response;
     }
 
-    protected function json(mixed $data): Response
+    protected function json($data): Response
     {
-        // set content type header
-        // encode data and set as content
+        $this->response->headers->set('Content-Type', 'application/json');
+        $this->response->setContent(json_encode($data));
+
         return $this->response;
     }
 
