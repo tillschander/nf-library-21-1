@@ -33,15 +33,17 @@ abstract class AbstractController
 
     protected function notFound(string $message): Response
     {
-        // set 404 status code
-        // set message as content
+        $this->response->setStatusCode(404);
+        $this->response->setContent($message);
+
         return $this->response;
     }
 
     protected function redirect(string $url): Response
     {
-        // set location header with url
-        // 302 status code
+        $this->response->setStatusCode(302);
+        $this->response->headers->set('Location', $url);
+
         return $this->response;
     }
 }
