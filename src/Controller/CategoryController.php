@@ -4,8 +4,8 @@ namespace App\Controller;
 
 class CategoryController extends AbstractController
 {
-    public static function show()
+    public function show()
     {
-        return static::render('category');
+        return $this->render('category');
     }
 }

@@ -6,8 +6,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class HomeController extends AbstractController
 {
-    public static function show(): Response
+    public function show(): Response
     {
-        return static::render('index');
+        return $this->render('index');
     }
 }

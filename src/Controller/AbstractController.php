@@ -16,13 +16,12 @@ abstract class AbstractController
         $this->response = new Response();
     }
 
-    protected static function render(string $view): Response
+    protected function render(string $view): Response
     {
-        $response = new Response();
         $template = file_get_contents(__DIR__ . "/../../templates/$view.html");
-        $response->setContent($template);
+        $this->response->setContent($template);
 
-        return $response;
+        return $this->response;
     }
 
     protected function json(mixed $data): Response

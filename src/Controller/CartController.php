@@ -4,22 +4,22 @@ namespace App\Controller;
 
 class CartController extends AbstractController
 {
-    public static function show()
+    public function show()
     {
-        return static::render('cart');
+        return $this->render('cart');
     }
 
-    public static function add()
+    public function add()
     {
         return '';
     }
 
-    public static function success()
+    public function success()
     {
-        return static::render('success');
+        return $this->render('success');
     }
 
-    public static function borrow()
+    public function borrow()
     {
         return '';
     }
