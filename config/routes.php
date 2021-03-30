@@ -1,25 +1,16 @@
 <?php
 
+use App\Controller\CartController;
+use App\Controller\CategoryController;
+use App\Controller\HomeController;
+use App\Controller\ItemController;
+
 return [
-    ['GET', '/', function () {
-        return file_get_contents(__DIR__ . '/../templates/index.html');
-    }],
-    ['GET', '/category/{id}', function () {
-        return file_get_contents(__DIR__ . '/../templates/category.html');
-    }],
-    ['GET', '/item/{id}', function () {
-        return file_get_contents(__DIR__ . '/../templates/item.html');
-    }],
-    ['GET', '/cart', function () {
-        return file_get_contents(__DIR__ . '/../templates/cart.html');
-    }],
-    ['POST', '/cart/{id}', function () {
-        return '';
-    }],
-    ['GET', '/cart/success', function () {
-        return file_get_contents(__DIR__ . '/../templates/success.html');
-    }],
-    ['POST', '/borrow', function () {
-        return '';
-    }]
+    ['GET', '/', [HomeController::class, 'show']],
+    ['GET', '/category/{id}', [CategoryController::class, 'show']],
+    ['GET', '/item/{id}', [ItemController::class, 'show']],
+    ['GET', '/cart', [CartController::class, 'show']],
+    ['POST', '/cart/{id}', [CartController::class, 'add']],
+    ['GET', '/cart/success', [CartController::class, 'success']],
+    ['POST', '/borrow', [CartController::class, 'borrow']]
 ];
