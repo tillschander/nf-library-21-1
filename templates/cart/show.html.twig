@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="max-w-7xl mx-auto px-8 flex mt-12">
+        <main class="w-2/3 pr-8">
+            <h1 class="text-lg font-bold text-nfblue">
+                Your cart
+            </h1>
+            {% if items %}
+                {{ include('cart/_table.html.twig') }}
+            {% else %}
+                <p class="mt-2">Your cart is empty</p>
+            {% endif %}
+        </main>
+
+        <aside class="w-1/3 mt-12">
+            {{ include('cart/_form.html.twig') }}
+        </aside>
+    </div>
+{% endblock %}

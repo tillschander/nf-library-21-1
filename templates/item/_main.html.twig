@@ -1,0 +1,22 @@
+<main class="max-w-7xl mx-auto px-8">
+    <div class="flex">
+        <div class="w-1/3">
+            <img class="w-full h-auto block rounded-xl -mt-24 border-8 border-gray-100 relative z-10"
+                src="{{ item.coverUrl }}" />
+        </div>
+        <div class="w-2/3 ml-8 text-nfblue">
+            <h3 class="mt-8 font-bold leading-tight text-4xl">{{ item.name }}</h3>
+            <h4 class="text-nfblue-light text-sm mt-1">{{ item.artist }}</h4>
+            <p class="mt-4"><b>Release:</b> {{ item.releaseDate }}</p>
+            <p class="mt-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam necessitatibus
+                accusantium iusto
+                maiores at repellat quis. Nisi similique veniam accusamus dignissimos nesciunt labore nihil numquam.
+                Repudiandae debitis voluptatem ad fugit?</p>
+            <form method="POST" action="/cart/{{ item.id }}">
+                <button class="px-6 py-2 mt-6 rounded-md text-white bg-nforange hover-orange">
+                    Borrow
+                </button>
+            </form>
+        </div>
+    </div>
+</main>

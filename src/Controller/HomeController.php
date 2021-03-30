@@ -8,6 +8,6 @@ class HomeController extends AbstractController
 {
     public function show(): Response
     {
-        return $this->render('index');
+        return $this->render('home/show.html.twig', []);
     }
 }

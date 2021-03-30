@@ -4,21 +4,29 @@ namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
 abstract class AbstractController
 {
     protected Request $request;
     protected Response $response;
+    protected Environment $twig;
 
     public function __construct()
     {
+        $loader = new FilesystemLoader(__DIR__ . '/../../templates');
+        $this->twig = new Environment($loader, [
+            'cache' => __DIR__ . '/../../var/cache',
+            'auto_reload' => true
+        ]);
         $this->request = Request::createFromGlobals();
         $this->response = new Response();
     }
 
-    protected function render(string $view): Response
+    protected function render(string $view, array $params): Response
     {
-        $template = file_get_contents(__DIR__ . "/../../templates/$view.html");
+        $template = $this->twig->render($view, $params);
         $this->response->setContent($template);
 
         return $this->response;

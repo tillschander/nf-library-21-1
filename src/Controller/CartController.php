@@ -6,7 +6,7 @@ class CartController extends AbstractController
 {
     public function show()
     {
-        return $this->render('cart');
+        return $this->render('cart/show.html.twig', []);
     }
 
     public function add()
@@ -16,7 +16,7 @@ class CartController extends AbstractController
 
     public function success()
     {
-        return $this->render('success');
+        return $this->render('cart/success.html.twig', []);
     }
 
     public function borrow()
