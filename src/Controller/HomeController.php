@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-class HomeController
+class HomeController extends AbstractController
 {
     public static function show()
     {

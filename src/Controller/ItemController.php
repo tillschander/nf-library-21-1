@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-class ItemController
+class ItemController extends AbstractController
 {
     public static function show()
     {

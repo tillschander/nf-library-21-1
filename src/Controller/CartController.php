@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-class CartController
+class CartController extends AbstractController
 {
     public static function show()
     {

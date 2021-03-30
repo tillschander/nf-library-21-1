@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-class CategoryController
+class CategoryController extends AbstractController
 {
     public static function show()
     {
