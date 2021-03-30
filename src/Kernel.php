@@ -48,17 +48,11 @@ class Kernel
     public function handle(Request $request): Response
     {
         $routeInfo = $this->dispatcher->dispatch($request->getMethod(), $request->getRequestUri());
-        $response = new Response();
 
         if ($routeInfo[0] === FastRoute\Dispatcher::FOUND) {
-            $content = call_user_func($routeInfo[1], $routeInfo[2]);
-            $response->setContent($content);
+            return call_user_func($routeInfo[1], $routeInfo[2]);
         }
         
-        if (!$response->getContent()) {
-            $response = new Response('404 - Not Found', 404);
-        }
-
-        return $response;
+        return new Response('404 - Not Found', 404);
     }
 }
