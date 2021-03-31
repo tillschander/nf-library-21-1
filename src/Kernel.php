@@ -2,6 +2,7 @@
 
 namespace App;
 
+use DI\Container;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use FastRoute;
@@ -9,11 +10,13 @@ use FastRoute;
 class Kernel
 {
     private FastRoute\Dispatcher $dispatcher;
+    private Container $container;
 
     public function __construct(string $environment)
     {
         $this->initErrorHandler($environment);
         $this->initDispatcher();
+        $this->initContainer();
     }
 
     private function initErrorhandler(string $environment): void
@@ -43,6 +46,11 @@ class Kernel
                 $r->addRoute($route[0], $route[1], $route[2]);
             }
         });
+    }
+
+    private function initContainer()
+    {
+        $this->container = new Container();
     }
 
     public function handle(Request $request): Response
