@@ -13,15 +13,11 @@ abstract class AbstractController
     protected Response $response;
     protected Environment $twig;
 
-    public function __construct()
+    public function __construct(Request $request, Response $response, Environment $twig)
     {
-        $loader = new FilesystemLoader(__DIR__ . '/../../templates');
-        $this->twig = new Environment($loader, [
-            'cache' => __DIR__ . '/../../var/cache',
-            'auto_reload' => true
-        ]);
-        $this->request = Request::createFromGlobals();
-        $this->response = new Response();
+        $this->request = $request;
+        $this->response = $response;
+        $this->twig = $twig;
     }
 
     protected function render(string $view, array $params): Response

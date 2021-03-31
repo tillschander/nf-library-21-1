@@ -3,6 +3,7 @@
 namespace App;
 
 use DI\Container;
+use DI\ContainerBuilder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use FastRoute;
@@ -50,7 +51,9 @@ class Kernel
 
     private function initContainer()
     {
-        $this->container = new Container();
+        $builder = new ContainerBuilder();
+        $builder->addDefinitions(__DIR__ . '/../config/services.php');
+        $this->container = $builder->build();
     }
 
     public function handle(Request $request): Response
