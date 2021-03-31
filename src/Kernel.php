@@ -58,10 +58,7 @@ class Kernel
         $routeInfo = $this->dispatcher->dispatch($request->getMethod(), $request->getRequestUri());
 
         if ($routeInfo[0] === FastRoute\Dispatcher::FOUND) {
-            $obj = new $routeInfo[1][0];
-            $method = $routeInfo[1][1];
-
-            return call_user_func([$obj, $method], $routeInfo[2]);
+            return $this->container->call($routeInfo[1], $routeInfo[2]);
         }
         
         return new Response('404 - Not Found', 404);
